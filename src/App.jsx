@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 // custom components
 import CustomForm from './components/CustomForm'
+import EditForm from './components/EditForm'
 
 import TaskList from './components/TaskList'
 
@@ -22,11 +23,13 @@ function App() {
 
 
 
+
   return (
     <div className="container">
       <header>
         <h1>My Task List</h1>
       </header>
+      <EditForm/>
       <CustomForm addTask={addTask}/>
       {tasks && (<TaskList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask}/>)}
     </div>
