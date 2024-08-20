@@ -12,6 +12,7 @@ const TaskList = ({tasks, deleteTask, toggleTask}) => {
           key={task.id}
           task={task}
           deleteTask={deleteTask}
+          toggleTask={toggleTask}
         />
       ))
       }

@@ -17,8 +17,10 @@ function App() {
   }
 
   const toggleTask = (id) => {
-    setTasks(prevState => prevState.map(t => (t.id === id ?{...t,checked: !t.checked}:t)))
+    setTasks(prevState => prevState.map(t => (t.id === id ?{...t, checked: !t.checked}:t)))
   }
+
+
 
   return (
     <div className="container">
