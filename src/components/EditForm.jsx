@@ -1,37 +1,43 @@
-import { PlusIcon } from '@heroicons/react/24/solid'
-
 import React, { useState } from 'react'
 
-export const EditForm = ({ addTask }) => {
-    const[UpdatedTaskName, setUpdatedTaskName]= useState("");
+//icons
+import { CheckIcon } from '@heroicons/react/24/outline'
+
+export const EditForm = ({ editedTaskTask, updateTask }) => {
+    const[UpdatedTaskName, setUpdatedTaskName]= useState(editedTask.name);
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        updateTask()
         
     }
 
 
   return (
+    <div role='dialog' aria-labelledby='editTask' 
+    //onClick={}
+    >
     <form className='todo' onSubmit={handleFormSubmit}>
         <div className="wrapper">
             <input
             type='text'
-            id='task'
+            id='editTask'
             className='input'
-            value={task}
-            onInput={(e) => setTask(e.target.value)}
+            value={UpdatedTaskName}
+            onInput={(e) => setUpdatedTaskName(e.target.value)}
             required
             autoFocus
             maxLength={60}
-            placeholder='Enter Task'
+            placeholder='Update Task'
             />
             <label 
-            htmlFor='task'
+            htmlFor='editTask'
             className='label'
             >Enter Task</label>
         </div>
-        <button className='btn' aria-label='Add Task' type='submit'> <PlusIcon className="size-6 text-blue-500" /></button>
+        <button className='btn' aria-label={'Confirm edited task to now read ${updatedTaskName'} type='submit'> <CheckIcon strokeWidth = {2} height ={24} width ={24}/></button>
     </form>
+    </div>
   )
 }
 

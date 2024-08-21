@@ -29,7 +29,7 @@ function App() {
       <header>
         <h1>My Task List</h1>
       </header>
-      <EditForm/>
+      <EditForm editedTask={editedTask} updateTask={updateTask}/>
       <CustomForm addTask={addTask}/>
       {tasks && (<TaskList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask}/>)}
     </div>
