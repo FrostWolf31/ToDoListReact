@@ -7,7 +7,7 @@ import { CheckIcon } from '@heroicons/react/24/outline'
 import { PencilIcon } from '@heroicons/react/24/outline'
 import { TrashIcon } from '@heroicons/react/24/solid';
 
-const TaskItem = ({task, deleteTask, toggleTask}) => {
+const TaskItem = ({task, deleteTask, toggleTask, enterEditMode}) => {
     const [isChecked, setIsChecked]= useState(task.checked);
 
     const handleCheckboxChange = (e) =>{
@@ -39,7 +39,7 @@ const TaskItem = ({task, deleteTask, toggleTask}) => {
             </div> 
             <div className={styles['task-group']}>
                 <button className='btn' aria-label={'Update $(task.name} Task'} 
-                //</div>onClick={}// 
+                onClick={() => enterEditMode(task)}
                 >
                      <PencilIcon width={24} height={24}/>
                 </button>

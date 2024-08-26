@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 //icons
 import { CheckIcon } from '@heroicons/react/24/outline'
 
-export const EditForm = ({ editedTaskTask, updateTask }) => {
+export const EditForm = ({ editedTask, updateTask }) => {
     const[UpdatedTaskName, setUpdatedTaskName]= useState(editedTask.name);
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        updateTask()
+        updateTask({...editedTask, name: UpdatedTaskName})
         
     }
 
