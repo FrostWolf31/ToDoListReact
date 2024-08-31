@@ -1,13 +1,15 @@
 import { useState } from 'react'
+//custom hooks
+
+import useLocalStorage from './hooks/useLocalStorage'
 
 // custom components
 import CustomForm from './components/CustomForm'
 import EditForm from './components/EditForm'
-
 import TaskList from './components/TaskList'
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useLocalStorage('react-todo.tasks',[]);
 
   const [editedTask,setEditedTask]= useState(null);
 
