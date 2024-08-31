@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 //icons
 import { CheckIcon } from '@heroicons/react/24/outline'
@@ -6,6 +6,18 @@ import { CheckIcon } from '@heroicons/react/24/outline'
 export const EditForm = ({ editedTask, updateTask }) => {
     const[UpdatedTaskName, setUpdatedTaskName]= useState(editedTask.name);
     
+    useEffect(() => {
+      const closeModalIfEscaped = (e) => {
+        e.key === 'Escape' && closeEditMode()
+      }
+      window.addEventListener('keydown',closeModalIfEscaped)
+
+      return() => {
+        window.removeEventListener('keydown',closeModalIfEscaped)
+      }
+    
+    },[closeEditMode])
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
         updateTask({...editedTask, name: UpdatedTaskName})
@@ -15,7 +27,7 @@ export const EditForm = ({ editedTask, updateTask }) => {
 
   return (
     <div role='dialog' aria-labelledby='editTask' 
-    //onClick={}
+    onClick={(e)=> {e.target === e.currentTarget && closeEditMode()}}
     >
     <form className='todo' onSubmit={handleFormSubmit}>
         <div className="wrapper">

@@ -40,6 +40,7 @@ function App() {
   const enterEditMode = (task) => {
     setEditedTask(task);
     setIsEditing(true)
+    setPreviousFocusEl(document.activeElement)
   }
 
 
@@ -48,7 +49,7 @@ function App() {
       <header>
         <h1>My Task List</h1>
       </header>
-      {isEditing && (<EditForm editedTask={editedTask} updateTask={updateTask}/>)}
+      {isEditing && (<EditForm editedTask={editedTask} updateTask={updateTask} closeEditMode={closeEditMode}/>)}
       <CustomForm addTask={addTask}/>
       {tasks && (<TaskList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask} enterEditMode={enterEditMode}/>)}
     </div>
